@@ -25,11 +25,11 @@ TEST(task_lib_test, Hamming_with_errors)
     Hamming74 D;
     std::vector<uint8_t> in = { 1, 2, 3, 4 };
     std::vector<uint8_t> En = D.Encode(in);
-    En[0] += 2;
+    En[0] += 32;
     En[0] += 128;
     En[2] += 2;
-   En[2] += 64;
-   En[4] += 1;
+    En[2] += 64;
+    En[4] -= 1;
     std::vector<uint8_t> De = D.Decode(En);
     ASSERT_EQ(De, in);
 }
